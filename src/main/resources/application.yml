@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/socks
+    username: sock
+    password: 1134
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
