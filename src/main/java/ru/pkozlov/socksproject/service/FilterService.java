@@ -2,6 +2,7 @@ package ru.pkozlov.socksproject.service;
 
 import org.springframework.stereotype.Service;
 import ru.pkozlov.socksproject.domain.Color;
+import ru.pkozlov.socksproject.dto.SocksDto;
 import ru.pkozlov.socksproject.filter.ColorFilter;
 import ru.pkozlov.socksproject.filter.CottonPartFilter;
 import ru.pkozlov.socksproject.filter.Filter;
@@ -23,6 +24,14 @@ public class FilterService {
         return Stream.of(
                         createColorFilter(color),
                         createCottonPartFilter(operation, cottonPart)
+                ).filter(Objects::nonNull)
+                .collect(Collectors.toSet());
+    }
+
+    public Set<Filter> createFilters(SocksDto socksDto) {
+        return Stream.of(
+                        createColorFilter(socksDto.getColor()),
+                        createCottonPartFilter(Operation.EQUAL, socksDto.getCottonPart())
                 ).filter(Objects::nonNull)
                 .collect(Collectors.toSet());
     }

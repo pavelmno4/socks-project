@@ -3,6 +3,6 @@ package ru.pkozlov.socksproject.dto;
 import lombok.Data;
 
 @Data
-public class ResponseDto {
+public class CountDto {
     private final String count;
 }
